@@ -2,13 +2,13 @@ import { useState } from 'react';
 
 const GiftExpertApp = () => {
     //Hook
-    let [contenido, setContenido] = useState(true);
+    const [categorias, setCategorias] = useState(['one punch', 'koku']);
 
-    //Funcion para actualizar el estado
-    function agregar() {
-        return setContenido(contenido ? contenido = false : contenido = true);
+    const addCat = () => {
+        setCategorias([...categorias, 'valorant'])
     }
 
+    console.log(categorias);
     return (
         <>
             {/* Titulo */}
@@ -16,13 +16,19 @@ const GiftExpertApp = () => {
 
             {/* Input */}
             <div className="card-grid">
-                {/* evento para actualizar el state */}
-                <button onClick={agregar}>Cambiar</button>
+
             </div>
 
-            <span className='{}'>{ }</span>
-
             {/* Listado de Gifs */}
+
+            {<ol>
+                {
+                    categorias.map((categoria) => {
+                        return <li key={categoria}>{categoria}</li>
+                    })
+                }
+            </ol>}
+            <button onClick={addCat}>Agregar</button>
         </>
     )
 }
